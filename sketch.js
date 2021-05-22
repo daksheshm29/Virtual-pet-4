@@ -1,4 +1,4 @@
-var dog,sadDog,happyDog,garden,washroom, database;
+var dog,sadDog,happyDog,deadDog,garden, database;
 var foodS,foodStock;
 var fedTime,lastFed,currentTime;
 var feed,addFood;
@@ -8,10 +8,14 @@ var bedroom,washroom,garden;
 var hour;
 
 function preload(){ 
+deadDog=loadImage("Images/deadDog.png")  
 sadDog=loadImage("Images/Dog.png");
 happyDog=loadImage("Images/happydog.png");
 garden=loadImage("Images/garden.png");
 bedroom=loadImage("Images/bedroom.png");
+washroom=loadImage("Images/washroom.png");
+garden=loadImage("Images/garden.png");
+
 
 }
 
@@ -96,14 +100,14 @@ function draw() {
    if(gameState!="Hungry"){
      feed.hide();
      addFood.hide();
-     dog.addImage(happyDog);
+    // dog.addImage(happyDog);
    }
    else{
     feed.show();
     addFood.show();
     dog.addImage(sadDog);
    }
-  drawSprites();
+   drawSprites();
 }
 
 //function to read food Stock
@@ -140,7 +144,7 @@ function update(state){
   });
 }
 
-async function getBackgroundImg(){
+async function getTime(){
   var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Singapore");
   var responseJSON = await response.json();
 
